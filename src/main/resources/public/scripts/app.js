@@ -87,7 +87,3 @@ app.controller('AstronomyCtrl', function($scope, AstronomyService) {
 		});
 	};
 });
-
-
-
-
