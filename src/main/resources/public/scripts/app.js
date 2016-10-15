@@ -28,32 +28,32 @@ function GetterService($http, $q) {
 	this.$q = $q;
 	this._region = 'CA';
 	this._city = 'Alameda';
-}
-
-GetterService.prototype.getRegion = function() {
-	return this._region; 
-}
-
-GetterService.prototype.getCity = function() {
-	return this._city;
-}
-
-GetterService.prototype.getData = function() {
-	return this._data;
-}
-
-GetterService.prototype.fetchData = function(region, city, api) {
-	this._region = region;
-	this._city = city;
+	
+	this.getRegion = function() {
+		return this._region;
+	}
+	
+	this.getCity = function() {
+		return this._city;
+	}
+	
+	this.getData = function() {
+		return this._data;
+	}
+	
 	var self = this;
-	var deferred = this.$q.defer();
-	this.$http.get('api/v1/' + api + '/' + region + '/' + city).success(function(data) {
-		deferred.resolve(data);
-		self._data = data;
-	}).error(function(data, status) {
-		console.log('Error: [' + status + '] ' + data);
-	});
-	return deferred.promise;
+	this.fetchData = function(region, city, api) {
+		self._region = region;
+		self._city = city;
+		var deferred = self.$q.defer();
+		self.$http.get('api/v1/' + api + '/' + region + '/' + city).success(function(data) {
+			deferred.resolve(data);
+			self._data = data;
+		}).error(function(data, status) {
+			console.log('Error: [' + status + '] ' + data);
+		});
+		return deferred.promise;
+	}
 }
 
 GetterService.$inject = ['$http', '$q'];
