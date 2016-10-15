@@ -28,7 +28,6 @@ function GetterService($http, $q) {
 	this.$q = $q;
 	this._region = 'CA';
 	this._city = 'Alameda';
-	
 }
 
 GetterService.prototype.getRegion = function() {
@@ -59,15 +58,7 @@ GetterService.prototype.fetchData = function(region, city, api) {
 
 GetterService.$inject = ['$http', '$q'];
 
-function ConditionsServiceImpl($http, $q) {
-	GetterService.call(this, $http, $q);
-}
-
-ConditionsServiceImpl.prototype = new GetterService();
-
-ConditionsServiceImpl.$inject = ['$http', '$q'];
-
-app.service('ConditionsService', ConditionsServiceImpl);
+app.service('ConditionsService', GetterService);
 
 app.controller('ConditionsCtrl', function($scope, ConditionsService) {
 
@@ -82,46 +73,16 @@ app.controller('ConditionsCtrl', function($scope, ConditionsService) {
 	};
 });
 
-app.service('AstronomyService', function($http, $q) {
-	this._region = 'CA';
-	this._city = 'Alameda';
-	this._astronomy;
-	var self = this;
-	
-	this.fetchAstronomy = function(region, city) {
-		self._region = region;
-		self._city = city;
-		var deferred = $q.defer();
-		$http.get('api/v1/astronomy/' + region + '/' + city).success(function(data) {
-			deferred.resolve(data);
-			self._astronomy = data;
-		}).error(function(data, status) {
-			console.log('Error: [' + status + '] ' + data);
-		});
-		return deferred.promise;
-	}
-	
-	this.getRegion = function() {
-		return self._region;
-	}
-	
-	this.getCity = function() {
-		return self._city;
-	}
-	
-	this.getAstronomy = function() {
-		return self._astronomy;
-	}
-});
+app.service('AstronomyService', GetterService);
 
 app.controller('AstronomyCtrl', function($scope, AstronomyService) {
 	
 	$scope.region = AstronomyService.getRegion();
 	$scope.city = AstronomyService.getCity();
-	$scope.astronomy = AstronomyService.getAstronomy();
+	$scope.astronomy = AstronomyService.getData();
 	
 	$scope.fetchAstronomicData = function() {
-		AstronomyService.fetchAstronomy($scope.region, $scope.city).then(function(a) {
+		AstronomyService.fetchData($scope.region, $scope.city, 'astronomy').then(function(a) {
 			$scope.astronomy = a;
 		});
 	};
