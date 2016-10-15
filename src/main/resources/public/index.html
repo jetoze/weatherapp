@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="weatherapp">
+<head>
+    <title>Weather App</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <!--link rel="stylesheet" href="/css/main.css"-->
+    <style>
+    	#main{
+    		padding: 0px 50px
+    	}
+    </style>
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Weather App</a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#conditions"><i class="fa fa-shield"></i> Conditions</a></li>
+            <li><a href="#astronomy"><i class="fa fa-comment"></i> Astronomy</a></li>
+        </ul>
+    </div>
+    </nav>
+</header>
+
+<div id="main">
+	<div ng-view=""></div>
+</div>
+
+<!--script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script-->
+<script src="/js/jquery.js"></script>
+<script src="/js/angular.js"></script>
+<script src="/js/angular-route.js"></script>
+<script src="/js/angular-cookies.js"></script>
+<script src="/js/angular-sanitize.js"></script>
+<script src="/js/angular-resource.js"></script>
+
+<script src="/scripts/app.js"></script>
+</body>
+</html>

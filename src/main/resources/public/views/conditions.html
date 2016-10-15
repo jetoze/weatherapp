@@ -1,0 +1,33 @@
+<h3>Current Conditions</h3>
+
+City: <input type="text" name="city" ng-model="city" ng-keyup="$event.keyCode == 13 ? fetchConditions() : null">
+<button ng-click="fetchConditions()">Get Current Conditions</button>
+
+<hr>
+
+<table>
+	<tr>
+		<td>Weather:</td>
+		<td>{{conditions.weather}}
+	</tr>
+	<tr>
+		<td>Temp (F):</td>
+		<td>{{conditions.tempF}}</td>
+	</tr>
+	<tr>
+		<td>Relative humidity:</td>
+		<td>{{conditions.relativeHumidity}}</td>
+	</tr>
+	<tr>
+		<td>Wind:</td>
+		<td>{{conditions.wind.description}}</td>
+	</tr>
+	<tr>
+		<td>Wind direction:</td>
+		<td>{{conditions.wind.direction}}</td>
+	</tr>
+	<tr>
+		<td>Wind speed (MPH):</td>
+		<td>{{conditions.wind.mph}}</td>
+	</tr>
+</table>

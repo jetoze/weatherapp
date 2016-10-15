@@ -1,0 +1,43 @@
+<h3>Astronomy</h3>
+
+City: <input type="text" name="city" ng-model="city" ng-keyup="$event.keyCode == 13 ? fetchAstronomicData() : null">
+<button ng-click="fetchAstronomicData()">Get Astronomic Data</button>
+
+<hr>
+
+<table>
+	<tr>
+	<th colspan="2">Moon</th>
+	<tr>
+	<td>Phase:</td>
+	<td>{{astronomy.moon.phase}}</td>
+	</tr>
+	<tr>
+	<td>Age:</td>
+	<td>{{astronomy.moon.age}}</td>
+	</tr>
+	<tr>
+	<td>% illuminated:</td>
+	<td>{{astronomy.moon.percentIlluminated}}</td>
+	</tr>
+	<tr>
+	<td>Rises:</td>
+	<td>{{astronomy.moon.rises.hour}}:{{astronomy.moon.rises.minute}}</td>
+	</tr>
+	<tr>
+	<td>Sets:</td>
+	<td>{{astronomy.moon.sets.hour}}:{{astronomy.moon.sets.minute}}</td>
+	</tr>
+	<tr>
+	<th colspan="2">Sun</th>
+	</tr>
+	<tr>
+	<td>Rises:</td>
+	<td>{{astronomy.sun.rises.hour}}:{{astronomy.sun.rises.minute}}</td>
+	</tr>
+	<tr>
+	<td>Sets:</td>
+	<td>{{astronomy.sun.sets.hour}}:{{astronomy.sun.sets.minute}}</td>
+	</tr>
+</table>
+
