@@ -3,9 +3,8 @@
 City: <input type="text" name="city" ng-model="city" ng-keyup="$event.keyCode == 13 ? fetchConditions() : null">
 <button ng-click="fetchConditions()">Get Current Conditions</button>
 
-<hr>
-
-<table>
+<div class="empty-vspace-25">
+<table class="table">
 	<tr>
 		<td>Weather:</td>
 		<td>{{conditions.weather}}
@@ -31,3 +30,4 @@ City: <input type="text" name="city" ng-model="city" ng-keyup="$event.keyCode ==
 		<td>{{conditions.wind.mph}}</td>
 	</tr>
 </table>
+</div>

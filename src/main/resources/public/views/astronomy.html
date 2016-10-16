@@ -3,9 +3,8 @@
 City: <input type="text" name="city" ng-model="city" ng-keyup="$event.keyCode == 13 ? fetchAstronomicData() : null">
 <button ng-click="fetchAstronomicData()">Get Astronomic Data</button>
 
-<hr>
-
-<table>
+<div class="empty-vspace-25">
+<table class="table">
 	<tr>
 	<th colspan="2">Moon</th>
 	<tr>
@@ -40,4 +39,4 @@ City: <input type="text" name="city" ng-model="city" ng-keyup="$event.keyCode ==
 	<td>{{astronomy.sun.sets.hour}}:{{astronomy.sun.sets.minute}}</td>
 	</tr>
 </table>
-
+</div>
